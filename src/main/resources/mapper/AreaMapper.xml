@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ies.spd.spdservices.dao.mapper.AreaMapper">
+    <resultMap id="BaseResultMap" type="com.ies.spd.spdservices.entity.Area">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="CODE" jdbcType="VARCHAR" property="code"/>
+        <!--<result column="P_CODE" jdbcType="VARCHAR" />-->
+        <result column="ITUDE_LONG" jdbcType="VARCHAR" property="longitude"/>
+        <result column="ITUDE_LAT" jdbcType="VARCHAR" property="latitude"/>
+        <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="rootCount" jdbcType="VARCHAR" property="rootCount"/>
+        <!--多对一-->
+        <!--<association property="areaParent" javaType="com.ies.spd.spdservices.entity.Area">-->
+            <!--<id column="ID" jdbcType="INTEGER" property="id"/>-->
+            <!--<result column="P_CODE" property="code"></result>-->
+            <!--<result column="NAME" property="name"></result>-->
+            <!--<result column="ITUDE_LONG" jdbcType="VARCHAR" property="longitude"/>-->
+            <!--<result column="ITUDE_LAT" jdbcType="VARCHAR" property="latitude"/>-->
+            <!--<result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateTime"/>-->
+            <!--<result column="rootCount" jdbcType="VARCHAR" property="rootCount"/>-->
+        <!--</association>-->
+        <!--一对多-->
+        <collection property="areaChildren" javaType="java.util.ArrayList" ofType="com.ies.spd.spdservices.entity.Area">
+            <id column="ID" jdbcType="INTEGER" property="id"/>
+            <result column="P_CODE" property="code"></result>
+            <result column="NAME" property="name"></result>
+            <result column="ITUDE_LONG" jdbcType="VARCHAR" property="longitude"/>
+            <result column="ITUDE_LAT" jdbcType="VARCHAR" property="latitude"/>
+            <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateTime"/>
+            <result column="rootCount" jdbcType="VARCHAR" property="rootCount"/>
+        </collection>
+    </resultMap>
+
+    <select id="getRootCount" resultMap="BaseResultMap" parameterType="java.lang.Boolean">
+        WITH RECURSIVE a ( id, NAME, P_CODE, `CODE`, UPDATE_DATE, ITUDE_LONG, ITUDE_LAT, IS_DELETE, eqid ) AS (
+            SELECT
+                t_area.ID,
+                t_area.NAME,
+                t_area.P_CODE,
+                t_area.`CODE`,
+                t_area.`UPDATE_DATE`,
+                t_area.ITUDE_LONG,
+                t_area.ITUDE_LAT,
+                t_area.IS_DELETE,
+                t_equipment.id AS eqid
+            FROM
+                t_area
+                LEFT JOIN t_equipment ON t_equipment.AREA_ID = t_area.ID
+            WHERE
+                t_equipment.IS_DELETE = FALSE
+                OR t_equipment.ID IS NULL UNION ALL
+            SELECT
+                b.ID,
+                b.NAME,
+                b.P_CODE,
+                b.`CODE`,
+                b.`UPDATE_DATE`,
+                b.ITUDE_LONG,
+                b.ITUDE_LAT,
+                b.IS_DELETE,
+                a.eqid
+            FROM
+                a
+                INNER JOIN t_area b ON a.P_CODE = b.`CODE`
+            ) SELECT
+            id,
+            `CODE`,
+            NAME,
+            P_CODE,
+            UPDATE_DATE,
+            ITUDE_LONG,
+            ITUDE_LAT,
+            IS_DELETE,
+            count( eqid ) AS rootCount
+        FROM
+            a
+        <if test="isRoot == true">
+            WHERE
+            P_CODE IS NULL
+        </if>
+        GROUP BY
+        CODE
+        ORDER BY
+            ID
+  </select>
+</mapper>

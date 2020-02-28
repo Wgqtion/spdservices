@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ies.spd.spdservices.dao.mapper.EquipmentMapper">
+  <resultMap id="BaseResultMap" type="model.Equipment">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="AREA_ID" jdbcType="INTEGER" property="areaId" />
+    <result column="AREA_P_ID" jdbcType="INTEGER" property="areaPId" />
+    <result column="VERSION_ID" jdbcType="INTEGER" property="versionId" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="IS_DELETE" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Equipment">
+    insert into t_equipment (ID, SPD_NO, AREA_ID, 
+      AREA_P_ID, VERSION_ID, UPDATE_TIME, 
+      IS_DELETE)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, 
+      #{areaPId,jdbcType=INTEGER}, #{versionId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Equipment">
+    insert into t_equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="areaId != null">
+        AREA_ID,
+      </if>
+      <if test="areaPId != null">
+        AREA_P_ID,
+      </if>
+      <if test="versionId != null">
+        VERSION_ID,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="isDelete != null">
+        IS_DELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="areaPId != null">
+        #{areaPId,jdbcType=INTEGER},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Equipment">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="AREA_ID" jdbcType="INTEGER" property="areaId" />
+    <result column="AREA_P_ID" jdbcType="INTEGER" property="areaPId" />
+    <result column="VERSION_ID" jdbcType="INTEGER" property="versionId" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="IS_DELETE" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Equipment">
+    insert into t_equipment (ID, SPD_NO, AREA_ID, 
+      AREA_P_ID, VERSION_ID, UPDATE_TIME, 
+      IS_DELETE)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, 
+      #{areaPId,jdbcType=INTEGER}, #{versionId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Equipment">
+    insert into t_equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="areaId != null">
+        AREA_ID,
+      </if>
+      <if test="areaPId != null">
+        AREA_P_ID,
+      </if>
+      <if test="versionId != null">
+        VERSION_ID,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="isDelete != null">
+        IS_DELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="areaPId != null">
+        #{areaPId,jdbcType=INTEGER},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Equipment">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="AREA_ID" jdbcType="INTEGER" property="areaId" />
+    <result column="AREA_P_ID" jdbcType="INTEGER" property="areaPId" />
+    <result column="VERSION_ID" jdbcType="INTEGER" property="versionId" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="IS_DELETE" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Equipment">
+    insert into t_equipment (ID, SPD_NO, AREA_ID, 
+      AREA_P_ID, VERSION_ID, UPDATE_TIME, 
+      IS_DELETE)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, 
+      #{areaPId,jdbcType=INTEGER}, #{versionId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Equipment">
+    insert into t_equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="areaId != null">
+        AREA_ID,
+      </if>
+      <if test="areaPId != null">
+        AREA_P_ID,
+      </if>
+      <if test="versionId != null">
+        VERSION_ID,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="isDelete != null">
+        IS_DELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="areaPId != null">
+        #{areaPId,jdbcType=INTEGER},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Equipment">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="AREA_ID" jdbcType="INTEGER" property="areaId" />
+    <result column="AREA_P_ID" jdbcType="INTEGER" property="areaPId" />
+    <result column="VERSION_ID" jdbcType="INTEGER" property="versionId" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="IS_DELETE" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Equipment">
+    insert into t_equipment (ID, SPD_NO, AREA_ID, 
+      AREA_P_ID, VERSION_ID, UPDATE_TIME, 
+      IS_DELETE)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, 
+      #{areaPId,jdbcType=INTEGER}, #{versionId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Equipment">
+    insert into t_equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="areaId != null">
+        AREA_ID,
+      </if>
+      <if test="areaPId != null">
+        AREA_P_ID,
+      </if>
+      <if test="versionId != null">
+        VERSION_ID,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="isDelete != null">
+        IS_DELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="areaPId != null">
+        #{areaPId,jdbcType=INTEGER},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Equipment">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="AREA_ID" jdbcType="INTEGER" property="areaId" />
+    <result column="AREA_P_ID" jdbcType="INTEGER" property="areaPId" />
+    <result column="VERSION_ID" jdbcType="INTEGER" property="versionId" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="IS_DELETE" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Equipment">
+    insert into t_equipment (ID, SPD_NO, AREA_ID, 
+      AREA_P_ID, VERSION_ID, UPDATE_TIME, 
+      IS_DELETE)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, 
+      #{areaPId,jdbcType=INTEGER}, #{versionId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Equipment">
+    insert into t_equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="areaId != null">
+        AREA_ID,
+      </if>
+      <if test="areaPId != null">
+        AREA_P_ID,
+      </if>
+      <if test="versionId != null">
+        VERSION_ID,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="isDelete != null">
+        IS_DELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="areaPId != null">
+        #{areaPId,jdbcType=INTEGER},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Equipment">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="AREA_ID" jdbcType="INTEGER" property="areaId" />
+    <result column="AREA_P_ID" jdbcType="INTEGER" property="areaPId" />
+    <result column="VERSION_ID" jdbcType="INTEGER" property="versionId" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="IS_DELETE" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Equipment">
+    insert into t_equipment (ID, SPD_NO, AREA_ID, 
+      AREA_P_ID, VERSION_ID, UPDATE_TIME, 
+      IS_DELETE)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{areaId,jdbcType=INTEGER}, 
+      #{areaPId,jdbcType=INTEGER}, #{versionId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Equipment">
+    insert into t_equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="areaId != null">
+        AREA_ID,
+      </if>
+      <if test="areaPId != null">
+        AREA_P_ID,
+      </if>
+      <if test="versionId != null">
+        VERSION_ID,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="isDelete != null">
+        IS_DELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="areaPId != null">
+        #{areaPId,jdbcType=INTEGER},
+      </if>
+      <if test="versionId != null">
+        #{versionId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

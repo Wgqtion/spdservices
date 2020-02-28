@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ies.spd.spdservices.dao.mapper.VersionMapper">
+  <resultMap id="BaseResultMap" type="model.Version">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="VERSION_NO" jdbcType="VARCHAR" property="versionNo" />
+    <result column="LIFE_THRESHOLD" jdbcType="INTEGER" property="lifeThreshold" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Version">
+    insert into t_version (ID, VERSION_NO, LIFE_THRESHOLD, 
+      DESCRIPTION, UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{versionNo,jdbcType=VARCHAR}, #{lifeThreshold,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Version">
+    insert into t_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="lifeThreshold != null">
+        LIFE_THRESHOLD,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lifeThreshold != null">
+        #{lifeThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Version">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="VERSION_NO" jdbcType="VARCHAR" property="versionNo" />
+    <result column="LIFE_THRESHOLD" jdbcType="INTEGER" property="lifeThreshold" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Version">
+    insert into t_version (ID, VERSION_NO, LIFE_THRESHOLD, 
+      DESCRIPTION, UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{versionNo,jdbcType=VARCHAR}, #{lifeThreshold,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Version">
+    insert into t_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="lifeThreshold != null">
+        LIFE_THRESHOLD,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lifeThreshold != null">
+        #{lifeThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Version">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="VERSION_NO" jdbcType="VARCHAR" property="versionNo" />
+    <result column="LIFE_THRESHOLD" jdbcType="INTEGER" property="lifeThreshold" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Version">
+    insert into t_version (ID, VERSION_NO, LIFE_THRESHOLD, 
+      DESCRIPTION, UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{versionNo,jdbcType=VARCHAR}, #{lifeThreshold,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Version">
+    insert into t_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="lifeThreshold != null">
+        LIFE_THRESHOLD,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lifeThreshold != null">
+        #{lifeThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Version">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="VERSION_NO" jdbcType="VARCHAR" property="versionNo" />
+    <result column="LIFE_THRESHOLD" jdbcType="INTEGER" property="lifeThreshold" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Version">
+    insert into t_version (ID, VERSION_NO, LIFE_THRESHOLD, 
+      DESCRIPTION, UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{versionNo,jdbcType=VARCHAR}, #{lifeThreshold,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Version">
+    insert into t_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="lifeThreshold != null">
+        LIFE_THRESHOLD,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lifeThreshold != null">
+        #{lifeThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Version">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="VERSION_NO" jdbcType="VARCHAR" property="versionNo" />
+    <result column="LIFE_THRESHOLD" jdbcType="INTEGER" property="lifeThreshold" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Version">
+    insert into t_version (ID, VERSION_NO, LIFE_THRESHOLD, 
+      DESCRIPTION, UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{versionNo,jdbcType=VARCHAR}, #{lifeThreshold,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Version">
+    insert into t_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="lifeThreshold != null">
+        LIFE_THRESHOLD,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lifeThreshold != null">
+        #{lifeThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Version">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="VERSION_NO" jdbcType="VARCHAR" property="versionNo" />
+    <result column="LIFE_THRESHOLD" jdbcType="INTEGER" property="lifeThreshold" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Version">
+    insert into t_version (ID, VERSION_NO, LIFE_THRESHOLD, 
+      DESCRIPTION, UPDATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{versionNo,jdbcType=VARCHAR}, #{lifeThreshold,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Version">
+    insert into t_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="versionNo != null">
+        VERSION_NO,
+      </if>
+      <if test="lifeThreshold != null">
+        LIFE_THRESHOLD,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="versionNo != null">
+        #{versionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lifeThreshold != null">
+        #{lifeThreshold,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

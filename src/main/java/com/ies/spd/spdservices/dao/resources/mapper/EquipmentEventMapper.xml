@@ -1,0 +1,1144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ies.spd.spdservices.dao.mapper.EquipmentEventMapper">
+  <resultMap id="BaseResultMap" type="model.EquipmentEvent">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="SPD_ID" jdbcType="INTEGER" property="spdId" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="SILC_L1" jdbcType="INTEGER" property="silcL1" />
+    <result column="SILC_L2" jdbcType="INTEGER" property="silcL2" />
+    <result column="SILC_L3" jdbcType="INTEGER" property="silcL3" />
+    <result column="SILC_L4" jdbcType="INTEGER" property="silcL4" />
+    <result column="LIGHTNING_AMPLITUDE_L1" jdbcType="INTEGER" property="lightningAmplitudeL1" />
+    <result column="LIGHTNING_AMPLITUDE_L2" jdbcType="INTEGER" property="lightningAmplitudeL2" />
+    <result column="LIGHTNING_AMPLITUDE_L3" jdbcType="INTEGER" property="lightningAmplitudeL3" />
+    <result column="LIGHTNING_AMPLITUDE_L4" jdbcType="INTEGER" property="lightningAmplitudeL4" />
+    <result column="LIGHTNING_COUNT_L1" jdbcType="INTEGER" property="lightningCountL1" />
+    <result column="LIGHTNING_COUNT_L2" jdbcType="INTEGER" property="lightningCountL2" />
+    <result column="LIGHTNING_COUNT_L3" jdbcType="INTEGER" property="lightningCountL3" />
+    <result column="LIGHTNING_COUNT_L4" jdbcType="INTEGER" property="lightningCountL4" />
+    <result column="LIFE_TERM_L1" jdbcType="INTEGER" property="lifeTermL1" />
+    <result column="LIFE_TERM_L2" jdbcType="INTEGER" property="lifeTermL2" />
+    <result column="LIFE_TERM_L3" jdbcType="INTEGER" property="lifeTermL3" />
+    <result column="LIFE_TERM_L4" jdbcType="INTEGER" property="lifeTermL4" />
+    <result column="EDITION" jdbcType="INTEGER" property="edition" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="LIGHTNING_TIME" jdbcType="TIMESTAMP" property="lightningTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event (ID, SPD_NO, SPD_ID, 
+      STATUS, SILC_L1, SILC_L2, 
+      SILC_L3, SILC_L4, LIGHTNING_AMPLITUDE_L1, 
+      LIGHTNING_AMPLITUDE_L2, LIGHTNING_AMPLITUDE_L3, 
+      LIGHTNING_AMPLITUDE_L4, LIGHTNING_COUNT_L1, 
+      LIGHTNING_COUNT_L2, LIGHTNING_COUNT_L3, LIGHTNING_COUNT_L4, 
+      LIFE_TERM_L1, LIFE_TERM_L2, LIFE_TERM_L3, 
+      LIFE_TERM_L4, EDITION, UPDATE_TIME, 
+      LIGHTNING_TIME)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{spdId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{silcL1,jdbcType=INTEGER}, #{silcL2,jdbcType=INTEGER}, 
+      #{silcL3,jdbcType=INTEGER}, #{silcL4,jdbcType=INTEGER}, #{lightningAmplitudeL1,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL2,jdbcType=INTEGER}, #{lightningAmplitudeL3,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL4,jdbcType=INTEGER}, #{lightningCountL1,jdbcType=INTEGER}, 
+      #{lightningCountL2,jdbcType=INTEGER}, #{lightningCountL3,jdbcType=INTEGER}, #{lightningCountL4,jdbcType=INTEGER}, 
+      #{lifeTermL1,jdbcType=INTEGER}, #{lifeTermL2,jdbcType=INTEGER}, #{lifeTermL3,jdbcType=INTEGER}, 
+      #{lifeTermL4,jdbcType=INTEGER}, #{edition,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{lightningTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="spdId != null">
+        SPD_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="silcL1 != null">
+        SILC_L1,
+      </if>
+      <if test="silcL2 != null">
+        SILC_L2,
+      </if>
+      <if test="silcL3 != null">
+        SILC_L3,
+      </if>
+      <if test="silcL4 != null">
+        SILC_L4,
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        LIGHTNING_AMPLITUDE_L1,
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        LIGHTNING_AMPLITUDE_L2,
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        LIGHTNING_AMPLITUDE_L3,
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        LIGHTNING_AMPLITUDE_L4,
+      </if>
+      <if test="lightningCountL1 != null">
+        LIGHTNING_COUNT_L1,
+      </if>
+      <if test="lightningCountL2 != null">
+        LIGHTNING_COUNT_L2,
+      </if>
+      <if test="lightningCountL3 != null">
+        LIGHTNING_COUNT_L3,
+      </if>
+      <if test="lightningCountL4 != null">
+        LIGHTNING_COUNT_L4,
+      </if>
+      <if test="lifeTermL1 != null">
+        LIFE_TERM_L1,
+      </if>
+      <if test="lifeTermL2 != null">
+        LIFE_TERM_L2,
+      </if>
+      <if test="lifeTermL3 != null">
+        LIFE_TERM_L3,
+      </if>
+      <if test="lifeTermL4 != null">
+        LIFE_TERM_L4,
+      </if>
+      <if test="edition != null">
+        EDITION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="lightningTime != null">
+        LIGHTNING_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="spdId != null">
+        #{spdId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="silcL1 != null">
+        #{silcL1,jdbcType=INTEGER},
+      </if>
+      <if test="silcL2 != null">
+        #{silcL2,jdbcType=INTEGER},
+      </if>
+      <if test="silcL3 != null">
+        #{silcL3,jdbcType=INTEGER},
+      </if>
+      <if test="silcL4 != null">
+        #{silcL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        #{lightningAmplitudeL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        #{lightningAmplitudeL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        #{lightningAmplitudeL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        #{lightningAmplitudeL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL1 != null">
+        #{lightningCountL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL2 != null">
+        #{lightningCountL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL3 != null">
+        #{lightningCountL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL4 != null">
+        #{lightningCountL4,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL1 != null">
+        #{lifeTermL1,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL2 != null">
+        #{lifeTermL2,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL3 != null">
+        #{lifeTermL3,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL4 != null">
+        #{lifeTermL4,jdbcType=INTEGER},
+      </if>
+      <if test="edition != null">
+        #{edition,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lightningTime != null">
+        #{lightningTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.EquipmentEvent">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="SPD_ID" jdbcType="INTEGER" property="spdId" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="SILC_L1" jdbcType="INTEGER" property="silcL1" />
+    <result column="SILC_L2" jdbcType="INTEGER" property="silcL2" />
+    <result column="SILC_L3" jdbcType="INTEGER" property="silcL3" />
+    <result column="SILC_L4" jdbcType="INTEGER" property="silcL4" />
+    <result column="LIGHTNING_AMPLITUDE_L1" jdbcType="INTEGER" property="lightningAmplitudeL1" />
+    <result column="LIGHTNING_AMPLITUDE_L2" jdbcType="INTEGER" property="lightningAmplitudeL2" />
+    <result column="LIGHTNING_AMPLITUDE_L3" jdbcType="INTEGER" property="lightningAmplitudeL3" />
+    <result column="LIGHTNING_AMPLITUDE_L4" jdbcType="INTEGER" property="lightningAmplitudeL4" />
+    <result column="LIGHTNING_COUNT_L1" jdbcType="INTEGER" property="lightningCountL1" />
+    <result column="LIGHTNING_COUNT_L2" jdbcType="INTEGER" property="lightningCountL2" />
+    <result column="LIGHTNING_COUNT_L3" jdbcType="INTEGER" property="lightningCountL3" />
+    <result column="LIGHTNING_COUNT_L4" jdbcType="INTEGER" property="lightningCountL4" />
+    <result column="LIFE_TERM_L1" jdbcType="INTEGER" property="lifeTermL1" />
+    <result column="LIFE_TERM_L2" jdbcType="INTEGER" property="lifeTermL2" />
+    <result column="LIFE_TERM_L3" jdbcType="INTEGER" property="lifeTermL3" />
+    <result column="LIFE_TERM_L4" jdbcType="INTEGER" property="lifeTermL4" />
+    <result column="EDITION" jdbcType="INTEGER" property="edition" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="LIGHTNING_TIME" jdbcType="TIMESTAMP" property="lightningTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event (ID, SPD_NO, SPD_ID, 
+      STATUS, SILC_L1, SILC_L2, 
+      SILC_L3, SILC_L4, LIGHTNING_AMPLITUDE_L1, 
+      LIGHTNING_AMPLITUDE_L2, LIGHTNING_AMPLITUDE_L3, 
+      LIGHTNING_AMPLITUDE_L4, LIGHTNING_COUNT_L1, 
+      LIGHTNING_COUNT_L2, LIGHTNING_COUNT_L3, LIGHTNING_COUNT_L4, 
+      LIFE_TERM_L1, LIFE_TERM_L2, LIFE_TERM_L3, 
+      LIFE_TERM_L4, EDITION, UPDATE_TIME, 
+      LIGHTNING_TIME)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{spdId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{silcL1,jdbcType=INTEGER}, #{silcL2,jdbcType=INTEGER}, 
+      #{silcL3,jdbcType=INTEGER}, #{silcL4,jdbcType=INTEGER}, #{lightningAmplitudeL1,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL2,jdbcType=INTEGER}, #{lightningAmplitudeL3,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL4,jdbcType=INTEGER}, #{lightningCountL1,jdbcType=INTEGER}, 
+      #{lightningCountL2,jdbcType=INTEGER}, #{lightningCountL3,jdbcType=INTEGER}, #{lightningCountL4,jdbcType=INTEGER}, 
+      #{lifeTermL1,jdbcType=INTEGER}, #{lifeTermL2,jdbcType=INTEGER}, #{lifeTermL3,jdbcType=INTEGER}, 
+      #{lifeTermL4,jdbcType=INTEGER}, #{edition,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{lightningTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="spdId != null">
+        SPD_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="silcL1 != null">
+        SILC_L1,
+      </if>
+      <if test="silcL2 != null">
+        SILC_L2,
+      </if>
+      <if test="silcL3 != null">
+        SILC_L3,
+      </if>
+      <if test="silcL4 != null">
+        SILC_L4,
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        LIGHTNING_AMPLITUDE_L1,
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        LIGHTNING_AMPLITUDE_L2,
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        LIGHTNING_AMPLITUDE_L3,
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        LIGHTNING_AMPLITUDE_L4,
+      </if>
+      <if test="lightningCountL1 != null">
+        LIGHTNING_COUNT_L1,
+      </if>
+      <if test="lightningCountL2 != null">
+        LIGHTNING_COUNT_L2,
+      </if>
+      <if test="lightningCountL3 != null">
+        LIGHTNING_COUNT_L3,
+      </if>
+      <if test="lightningCountL4 != null">
+        LIGHTNING_COUNT_L4,
+      </if>
+      <if test="lifeTermL1 != null">
+        LIFE_TERM_L1,
+      </if>
+      <if test="lifeTermL2 != null">
+        LIFE_TERM_L2,
+      </if>
+      <if test="lifeTermL3 != null">
+        LIFE_TERM_L3,
+      </if>
+      <if test="lifeTermL4 != null">
+        LIFE_TERM_L4,
+      </if>
+      <if test="edition != null">
+        EDITION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="lightningTime != null">
+        LIGHTNING_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="spdId != null">
+        #{spdId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="silcL1 != null">
+        #{silcL1,jdbcType=INTEGER},
+      </if>
+      <if test="silcL2 != null">
+        #{silcL2,jdbcType=INTEGER},
+      </if>
+      <if test="silcL3 != null">
+        #{silcL3,jdbcType=INTEGER},
+      </if>
+      <if test="silcL4 != null">
+        #{silcL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        #{lightningAmplitudeL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        #{lightningAmplitudeL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        #{lightningAmplitudeL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        #{lightningAmplitudeL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL1 != null">
+        #{lightningCountL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL2 != null">
+        #{lightningCountL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL3 != null">
+        #{lightningCountL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL4 != null">
+        #{lightningCountL4,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL1 != null">
+        #{lifeTermL1,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL2 != null">
+        #{lifeTermL2,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL3 != null">
+        #{lifeTermL3,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL4 != null">
+        #{lifeTermL4,jdbcType=INTEGER},
+      </if>
+      <if test="edition != null">
+        #{edition,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lightningTime != null">
+        #{lightningTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.EquipmentEvent">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="SPD_ID" jdbcType="INTEGER" property="spdId" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="SILC_L1" jdbcType="INTEGER" property="silcL1" />
+    <result column="SILC_L2" jdbcType="INTEGER" property="silcL2" />
+    <result column="SILC_L3" jdbcType="INTEGER" property="silcL3" />
+    <result column="SILC_L4" jdbcType="INTEGER" property="silcL4" />
+    <result column="LIGHTNING_AMPLITUDE_L1" jdbcType="INTEGER" property="lightningAmplitudeL1" />
+    <result column="LIGHTNING_AMPLITUDE_L2" jdbcType="INTEGER" property="lightningAmplitudeL2" />
+    <result column="LIGHTNING_AMPLITUDE_L3" jdbcType="INTEGER" property="lightningAmplitudeL3" />
+    <result column="LIGHTNING_AMPLITUDE_L4" jdbcType="INTEGER" property="lightningAmplitudeL4" />
+    <result column="LIGHTNING_COUNT_L1" jdbcType="INTEGER" property="lightningCountL1" />
+    <result column="LIGHTNING_COUNT_L2" jdbcType="INTEGER" property="lightningCountL2" />
+    <result column="LIGHTNING_COUNT_L3" jdbcType="INTEGER" property="lightningCountL3" />
+    <result column="LIGHTNING_COUNT_L4" jdbcType="INTEGER" property="lightningCountL4" />
+    <result column="LIFE_TERM_L1" jdbcType="INTEGER" property="lifeTermL1" />
+    <result column="LIFE_TERM_L2" jdbcType="INTEGER" property="lifeTermL2" />
+    <result column="LIFE_TERM_L3" jdbcType="INTEGER" property="lifeTermL3" />
+    <result column="LIFE_TERM_L4" jdbcType="INTEGER" property="lifeTermL4" />
+    <result column="EDITION" jdbcType="INTEGER" property="edition" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="LIGHTNING_TIME" jdbcType="TIMESTAMP" property="lightningTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event (ID, SPD_NO, SPD_ID, 
+      STATUS, SILC_L1, SILC_L2, 
+      SILC_L3, SILC_L4, LIGHTNING_AMPLITUDE_L1, 
+      LIGHTNING_AMPLITUDE_L2, LIGHTNING_AMPLITUDE_L3, 
+      LIGHTNING_AMPLITUDE_L4, LIGHTNING_COUNT_L1, 
+      LIGHTNING_COUNT_L2, LIGHTNING_COUNT_L3, LIGHTNING_COUNT_L4, 
+      LIFE_TERM_L1, LIFE_TERM_L2, LIFE_TERM_L3, 
+      LIFE_TERM_L4, EDITION, UPDATE_TIME, 
+      LIGHTNING_TIME)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{spdId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{silcL1,jdbcType=INTEGER}, #{silcL2,jdbcType=INTEGER}, 
+      #{silcL3,jdbcType=INTEGER}, #{silcL4,jdbcType=INTEGER}, #{lightningAmplitudeL1,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL2,jdbcType=INTEGER}, #{lightningAmplitudeL3,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL4,jdbcType=INTEGER}, #{lightningCountL1,jdbcType=INTEGER}, 
+      #{lightningCountL2,jdbcType=INTEGER}, #{lightningCountL3,jdbcType=INTEGER}, #{lightningCountL4,jdbcType=INTEGER}, 
+      #{lifeTermL1,jdbcType=INTEGER}, #{lifeTermL2,jdbcType=INTEGER}, #{lifeTermL3,jdbcType=INTEGER}, 
+      #{lifeTermL4,jdbcType=INTEGER}, #{edition,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{lightningTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="spdId != null">
+        SPD_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="silcL1 != null">
+        SILC_L1,
+      </if>
+      <if test="silcL2 != null">
+        SILC_L2,
+      </if>
+      <if test="silcL3 != null">
+        SILC_L3,
+      </if>
+      <if test="silcL4 != null">
+        SILC_L4,
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        LIGHTNING_AMPLITUDE_L1,
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        LIGHTNING_AMPLITUDE_L2,
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        LIGHTNING_AMPLITUDE_L3,
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        LIGHTNING_AMPLITUDE_L4,
+      </if>
+      <if test="lightningCountL1 != null">
+        LIGHTNING_COUNT_L1,
+      </if>
+      <if test="lightningCountL2 != null">
+        LIGHTNING_COUNT_L2,
+      </if>
+      <if test="lightningCountL3 != null">
+        LIGHTNING_COUNT_L3,
+      </if>
+      <if test="lightningCountL4 != null">
+        LIGHTNING_COUNT_L4,
+      </if>
+      <if test="lifeTermL1 != null">
+        LIFE_TERM_L1,
+      </if>
+      <if test="lifeTermL2 != null">
+        LIFE_TERM_L2,
+      </if>
+      <if test="lifeTermL3 != null">
+        LIFE_TERM_L3,
+      </if>
+      <if test="lifeTermL4 != null">
+        LIFE_TERM_L4,
+      </if>
+      <if test="edition != null">
+        EDITION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="lightningTime != null">
+        LIGHTNING_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="spdId != null">
+        #{spdId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="silcL1 != null">
+        #{silcL1,jdbcType=INTEGER},
+      </if>
+      <if test="silcL2 != null">
+        #{silcL2,jdbcType=INTEGER},
+      </if>
+      <if test="silcL3 != null">
+        #{silcL3,jdbcType=INTEGER},
+      </if>
+      <if test="silcL4 != null">
+        #{silcL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        #{lightningAmplitudeL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        #{lightningAmplitudeL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        #{lightningAmplitudeL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        #{lightningAmplitudeL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL1 != null">
+        #{lightningCountL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL2 != null">
+        #{lightningCountL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL3 != null">
+        #{lightningCountL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL4 != null">
+        #{lightningCountL4,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL1 != null">
+        #{lifeTermL1,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL2 != null">
+        #{lifeTermL2,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL3 != null">
+        #{lifeTermL3,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL4 != null">
+        #{lifeTermL4,jdbcType=INTEGER},
+      </if>
+      <if test="edition != null">
+        #{edition,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lightningTime != null">
+        #{lightningTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.EquipmentEvent">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="SPD_ID" jdbcType="INTEGER" property="spdId" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="SILC_L1" jdbcType="INTEGER" property="silcL1" />
+    <result column="SILC_L2" jdbcType="INTEGER" property="silcL2" />
+    <result column="SILC_L3" jdbcType="INTEGER" property="silcL3" />
+    <result column="SILC_L4" jdbcType="INTEGER" property="silcL4" />
+    <result column="LIGHTNING_AMPLITUDE_L1" jdbcType="INTEGER" property="lightningAmplitudeL1" />
+    <result column="LIGHTNING_AMPLITUDE_L2" jdbcType="INTEGER" property="lightningAmplitudeL2" />
+    <result column="LIGHTNING_AMPLITUDE_L3" jdbcType="INTEGER" property="lightningAmplitudeL3" />
+    <result column="LIGHTNING_AMPLITUDE_L4" jdbcType="INTEGER" property="lightningAmplitudeL4" />
+    <result column="LIGHTNING_COUNT_L1" jdbcType="INTEGER" property="lightningCountL1" />
+    <result column="LIGHTNING_COUNT_L2" jdbcType="INTEGER" property="lightningCountL2" />
+    <result column="LIGHTNING_COUNT_L3" jdbcType="INTEGER" property="lightningCountL3" />
+    <result column="LIGHTNING_COUNT_L4" jdbcType="INTEGER" property="lightningCountL4" />
+    <result column="LIFE_TERM_L1" jdbcType="INTEGER" property="lifeTermL1" />
+    <result column="LIFE_TERM_L2" jdbcType="INTEGER" property="lifeTermL2" />
+    <result column="LIFE_TERM_L3" jdbcType="INTEGER" property="lifeTermL3" />
+    <result column="LIFE_TERM_L4" jdbcType="INTEGER" property="lifeTermL4" />
+    <result column="EDITION" jdbcType="INTEGER" property="edition" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="LIGHTNING_TIME" jdbcType="TIMESTAMP" property="lightningTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event (ID, SPD_NO, SPD_ID, 
+      STATUS, SILC_L1, SILC_L2, 
+      SILC_L3, SILC_L4, LIGHTNING_AMPLITUDE_L1, 
+      LIGHTNING_AMPLITUDE_L2, LIGHTNING_AMPLITUDE_L3, 
+      LIGHTNING_AMPLITUDE_L4, LIGHTNING_COUNT_L1, 
+      LIGHTNING_COUNT_L2, LIGHTNING_COUNT_L3, LIGHTNING_COUNT_L4, 
+      LIFE_TERM_L1, LIFE_TERM_L2, LIFE_TERM_L3, 
+      LIFE_TERM_L4, EDITION, UPDATE_TIME, 
+      LIGHTNING_TIME)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{spdId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{silcL1,jdbcType=INTEGER}, #{silcL2,jdbcType=INTEGER}, 
+      #{silcL3,jdbcType=INTEGER}, #{silcL4,jdbcType=INTEGER}, #{lightningAmplitudeL1,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL2,jdbcType=INTEGER}, #{lightningAmplitudeL3,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL4,jdbcType=INTEGER}, #{lightningCountL1,jdbcType=INTEGER}, 
+      #{lightningCountL2,jdbcType=INTEGER}, #{lightningCountL3,jdbcType=INTEGER}, #{lightningCountL4,jdbcType=INTEGER}, 
+      #{lifeTermL1,jdbcType=INTEGER}, #{lifeTermL2,jdbcType=INTEGER}, #{lifeTermL3,jdbcType=INTEGER}, 
+      #{lifeTermL4,jdbcType=INTEGER}, #{edition,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{lightningTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="spdId != null">
+        SPD_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="silcL1 != null">
+        SILC_L1,
+      </if>
+      <if test="silcL2 != null">
+        SILC_L2,
+      </if>
+      <if test="silcL3 != null">
+        SILC_L3,
+      </if>
+      <if test="silcL4 != null">
+        SILC_L4,
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        LIGHTNING_AMPLITUDE_L1,
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        LIGHTNING_AMPLITUDE_L2,
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        LIGHTNING_AMPLITUDE_L3,
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        LIGHTNING_AMPLITUDE_L4,
+      </if>
+      <if test="lightningCountL1 != null">
+        LIGHTNING_COUNT_L1,
+      </if>
+      <if test="lightningCountL2 != null">
+        LIGHTNING_COUNT_L2,
+      </if>
+      <if test="lightningCountL3 != null">
+        LIGHTNING_COUNT_L3,
+      </if>
+      <if test="lightningCountL4 != null">
+        LIGHTNING_COUNT_L4,
+      </if>
+      <if test="lifeTermL1 != null">
+        LIFE_TERM_L1,
+      </if>
+      <if test="lifeTermL2 != null">
+        LIFE_TERM_L2,
+      </if>
+      <if test="lifeTermL3 != null">
+        LIFE_TERM_L3,
+      </if>
+      <if test="lifeTermL4 != null">
+        LIFE_TERM_L4,
+      </if>
+      <if test="edition != null">
+        EDITION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="lightningTime != null">
+        LIGHTNING_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="spdId != null">
+        #{spdId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="silcL1 != null">
+        #{silcL1,jdbcType=INTEGER},
+      </if>
+      <if test="silcL2 != null">
+        #{silcL2,jdbcType=INTEGER},
+      </if>
+      <if test="silcL3 != null">
+        #{silcL3,jdbcType=INTEGER},
+      </if>
+      <if test="silcL4 != null">
+        #{silcL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        #{lightningAmplitudeL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        #{lightningAmplitudeL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        #{lightningAmplitudeL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        #{lightningAmplitudeL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL1 != null">
+        #{lightningCountL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL2 != null">
+        #{lightningCountL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL3 != null">
+        #{lightningCountL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL4 != null">
+        #{lightningCountL4,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL1 != null">
+        #{lifeTermL1,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL2 != null">
+        #{lifeTermL2,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL3 != null">
+        #{lifeTermL3,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL4 != null">
+        #{lifeTermL4,jdbcType=INTEGER},
+      </if>
+      <if test="edition != null">
+        #{edition,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lightningTime != null">
+        #{lightningTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.EquipmentEvent">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="SPD_ID" jdbcType="INTEGER" property="spdId" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="SILC_L1" jdbcType="INTEGER" property="silcL1" />
+    <result column="SILC_L2" jdbcType="INTEGER" property="silcL2" />
+    <result column="SILC_L3" jdbcType="INTEGER" property="silcL3" />
+    <result column="SILC_L4" jdbcType="INTEGER" property="silcL4" />
+    <result column="LIGHTNING_AMPLITUDE_L1" jdbcType="INTEGER" property="lightningAmplitudeL1" />
+    <result column="LIGHTNING_AMPLITUDE_L2" jdbcType="INTEGER" property="lightningAmplitudeL2" />
+    <result column="LIGHTNING_AMPLITUDE_L3" jdbcType="INTEGER" property="lightningAmplitudeL3" />
+    <result column="LIGHTNING_AMPLITUDE_L4" jdbcType="INTEGER" property="lightningAmplitudeL4" />
+    <result column="LIGHTNING_COUNT_L1" jdbcType="INTEGER" property="lightningCountL1" />
+    <result column="LIGHTNING_COUNT_L2" jdbcType="INTEGER" property="lightningCountL2" />
+    <result column="LIGHTNING_COUNT_L3" jdbcType="INTEGER" property="lightningCountL3" />
+    <result column="LIGHTNING_COUNT_L4" jdbcType="INTEGER" property="lightningCountL4" />
+    <result column="LIFE_TERM_L1" jdbcType="INTEGER" property="lifeTermL1" />
+    <result column="LIFE_TERM_L2" jdbcType="INTEGER" property="lifeTermL2" />
+    <result column="LIFE_TERM_L3" jdbcType="INTEGER" property="lifeTermL3" />
+    <result column="LIFE_TERM_L4" jdbcType="INTEGER" property="lifeTermL4" />
+    <result column="EDITION" jdbcType="INTEGER" property="edition" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="LIGHTNING_TIME" jdbcType="TIMESTAMP" property="lightningTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event (ID, SPD_NO, SPD_ID, 
+      STATUS, SILC_L1, SILC_L2, 
+      SILC_L3, SILC_L4, LIGHTNING_AMPLITUDE_L1, 
+      LIGHTNING_AMPLITUDE_L2, LIGHTNING_AMPLITUDE_L3, 
+      LIGHTNING_AMPLITUDE_L4, LIGHTNING_COUNT_L1, 
+      LIGHTNING_COUNT_L2, LIGHTNING_COUNT_L3, LIGHTNING_COUNT_L4, 
+      LIFE_TERM_L1, LIFE_TERM_L2, LIFE_TERM_L3, 
+      LIFE_TERM_L4, EDITION, UPDATE_TIME, 
+      LIGHTNING_TIME)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{spdId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{silcL1,jdbcType=INTEGER}, #{silcL2,jdbcType=INTEGER}, 
+      #{silcL3,jdbcType=INTEGER}, #{silcL4,jdbcType=INTEGER}, #{lightningAmplitudeL1,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL2,jdbcType=INTEGER}, #{lightningAmplitudeL3,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL4,jdbcType=INTEGER}, #{lightningCountL1,jdbcType=INTEGER}, 
+      #{lightningCountL2,jdbcType=INTEGER}, #{lightningCountL3,jdbcType=INTEGER}, #{lightningCountL4,jdbcType=INTEGER}, 
+      #{lifeTermL1,jdbcType=INTEGER}, #{lifeTermL2,jdbcType=INTEGER}, #{lifeTermL3,jdbcType=INTEGER}, 
+      #{lifeTermL4,jdbcType=INTEGER}, #{edition,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{lightningTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="spdId != null">
+        SPD_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="silcL1 != null">
+        SILC_L1,
+      </if>
+      <if test="silcL2 != null">
+        SILC_L2,
+      </if>
+      <if test="silcL3 != null">
+        SILC_L3,
+      </if>
+      <if test="silcL4 != null">
+        SILC_L4,
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        LIGHTNING_AMPLITUDE_L1,
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        LIGHTNING_AMPLITUDE_L2,
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        LIGHTNING_AMPLITUDE_L3,
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        LIGHTNING_AMPLITUDE_L4,
+      </if>
+      <if test="lightningCountL1 != null">
+        LIGHTNING_COUNT_L1,
+      </if>
+      <if test="lightningCountL2 != null">
+        LIGHTNING_COUNT_L2,
+      </if>
+      <if test="lightningCountL3 != null">
+        LIGHTNING_COUNT_L3,
+      </if>
+      <if test="lightningCountL4 != null">
+        LIGHTNING_COUNT_L4,
+      </if>
+      <if test="lifeTermL1 != null">
+        LIFE_TERM_L1,
+      </if>
+      <if test="lifeTermL2 != null">
+        LIFE_TERM_L2,
+      </if>
+      <if test="lifeTermL3 != null">
+        LIFE_TERM_L3,
+      </if>
+      <if test="lifeTermL4 != null">
+        LIFE_TERM_L4,
+      </if>
+      <if test="edition != null">
+        EDITION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="lightningTime != null">
+        LIGHTNING_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="spdId != null">
+        #{spdId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="silcL1 != null">
+        #{silcL1,jdbcType=INTEGER},
+      </if>
+      <if test="silcL2 != null">
+        #{silcL2,jdbcType=INTEGER},
+      </if>
+      <if test="silcL3 != null">
+        #{silcL3,jdbcType=INTEGER},
+      </if>
+      <if test="silcL4 != null">
+        #{silcL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        #{lightningAmplitudeL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        #{lightningAmplitudeL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        #{lightningAmplitudeL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        #{lightningAmplitudeL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL1 != null">
+        #{lightningCountL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL2 != null">
+        #{lightningCountL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL3 != null">
+        #{lightningCountL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL4 != null">
+        #{lightningCountL4,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL1 != null">
+        #{lifeTermL1,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL2 != null">
+        #{lifeTermL2,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL3 != null">
+        #{lifeTermL3,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL4 != null">
+        #{lifeTermL4,jdbcType=INTEGER},
+      </if>
+      <if test="edition != null">
+        #{edition,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lightningTime != null">
+        #{lightningTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.EquipmentEvent">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo" />
+    <result column="SPD_ID" jdbcType="INTEGER" property="spdId" />
+    <result column="STATUS" jdbcType="INTEGER" property="status" />
+    <result column="SILC_L1" jdbcType="INTEGER" property="silcL1" />
+    <result column="SILC_L2" jdbcType="INTEGER" property="silcL2" />
+    <result column="SILC_L3" jdbcType="INTEGER" property="silcL3" />
+    <result column="SILC_L4" jdbcType="INTEGER" property="silcL4" />
+    <result column="LIGHTNING_AMPLITUDE_L1" jdbcType="INTEGER" property="lightningAmplitudeL1" />
+    <result column="LIGHTNING_AMPLITUDE_L2" jdbcType="INTEGER" property="lightningAmplitudeL2" />
+    <result column="LIGHTNING_AMPLITUDE_L3" jdbcType="INTEGER" property="lightningAmplitudeL3" />
+    <result column="LIGHTNING_AMPLITUDE_L4" jdbcType="INTEGER" property="lightningAmplitudeL4" />
+    <result column="LIGHTNING_COUNT_L1" jdbcType="INTEGER" property="lightningCountL1" />
+    <result column="LIGHTNING_COUNT_L2" jdbcType="INTEGER" property="lightningCountL2" />
+    <result column="LIGHTNING_COUNT_L3" jdbcType="INTEGER" property="lightningCountL3" />
+    <result column="LIGHTNING_COUNT_L4" jdbcType="INTEGER" property="lightningCountL4" />
+    <result column="LIFE_TERM_L1" jdbcType="INTEGER" property="lifeTermL1" />
+    <result column="LIFE_TERM_L2" jdbcType="INTEGER" property="lifeTermL2" />
+    <result column="LIFE_TERM_L3" jdbcType="INTEGER" property="lifeTermL3" />
+    <result column="LIFE_TERM_L4" jdbcType="INTEGER" property="lifeTermL4" />
+    <result column="EDITION" jdbcType="INTEGER" property="edition" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="LIGHTNING_TIME" jdbcType="TIMESTAMP" property="lightningTime" />
+  </resultMap>
+  <insert id="insert" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event (ID, SPD_NO, SPD_ID, 
+      STATUS, SILC_L1, SILC_L2, 
+      SILC_L3, SILC_L4, LIGHTNING_AMPLITUDE_L1, 
+      LIGHTNING_AMPLITUDE_L2, LIGHTNING_AMPLITUDE_L3, 
+      LIGHTNING_AMPLITUDE_L4, LIGHTNING_COUNT_L1, 
+      LIGHTNING_COUNT_L2, LIGHTNING_COUNT_L3, LIGHTNING_COUNT_L4, 
+      LIFE_TERM_L1, LIFE_TERM_L2, LIFE_TERM_L3, 
+      LIFE_TERM_L4, EDITION, UPDATE_TIME, 
+      LIGHTNING_TIME)
+    values (#{id,jdbcType=INTEGER}, #{spdNo,jdbcType=VARCHAR}, #{spdId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{silcL1,jdbcType=INTEGER}, #{silcL2,jdbcType=INTEGER}, 
+      #{silcL3,jdbcType=INTEGER}, #{silcL4,jdbcType=INTEGER}, #{lightningAmplitudeL1,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL2,jdbcType=INTEGER}, #{lightningAmplitudeL3,jdbcType=INTEGER}, 
+      #{lightningAmplitudeL4,jdbcType=INTEGER}, #{lightningCountL1,jdbcType=INTEGER}, 
+      #{lightningCountL2,jdbcType=INTEGER}, #{lightningCountL3,jdbcType=INTEGER}, #{lightningCountL4,jdbcType=INTEGER}, 
+      #{lifeTermL1,jdbcType=INTEGER}, #{lifeTermL2,jdbcType=INTEGER}, #{lifeTermL3,jdbcType=INTEGER}, 
+      #{lifeTermL4,jdbcType=INTEGER}, #{edition,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{lightningTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.EquipmentEvent">
+    insert into t_equipment_event
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="spdNo != null">
+        SPD_NO,
+      </if>
+      <if test="spdId != null">
+        SPD_ID,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="silcL1 != null">
+        SILC_L1,
+      </if>
+      <if test="silcL2 != null">
+        SILC_L2,
+      </if>
+      <if test="silcL3 != null">
+        SILC_L3,
+      </if>
+      <if test="silcL4 != null">
+        SILC_L4,
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        LIGHTNING_AMPLITUDE_L1,
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        LIGHTNING_AMPLITUDE_L2,
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        LIGHTNING_AMPLITUDE_L3,
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        LIGHTNING_AMPLITUDE_L4,
+      </if>
+      <if test="lightningCountL1 != null">
+        LIGHTNING_COUNT_L1,
+      </if>
+      <if test="lightningCountL2 != null">
+        LIGHTNING_COUNT_L2,
+      </if>
+      <if test="lightningCountL3 != null">
+        LIGHTNING_COUNT_L3,
+      </if>
+      <if test="lightningCountL4 != null">
+        LIGHTNING_COUNT_L4,
+      </if>
+      <if test="lifeTermL1 != null">
+        LIFE_TERM_L1,
+      </if>
+      <if test="lifeTermL2 != null">
+        LIFE_TERM_L2,
+      </if>
+      <if test="lifeTermL3 != null">
+        LIFE_TERM_L3,
+      </if>
+      <if test="lifeTermL4 != null">
+        LIFE_TERM_L4,
+      </if>
+      <if test="edition != null">
+        EDITION,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="lightningTime != null">
+        LIGHTNING_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="spdNo != null">
+        #{spdNo,jdbcType=VARCHAR},
+      </if>
+      <if test="spdId != null">
+        #{spdId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="silcL1 != null">
+        #{silcL1,jdbcType=INTEGER},
+      </if>
+      <if test="silcL2 != null">
+        #{silcL2,jdbcType=INTEGER},
+      </if>
+      <if test="silcL3 != null">
+        #{silcL3,jdbcType=INTEGER},
+      </if>
+      <if test="silcL4 != null">
+        #{silcL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL1 != null">
+        #{lightningAmplitudeL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL2 != null">
+        #{lightningAmplitudeL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL3 != null">
+        #{lightningAmplitudeL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningAmplitudeL4 != null">
+        #{lightningAmplitudeL4,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL1 != null">
+        #{lightningCountL1,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL2 != null">
+        #{lightningCountL2,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL3 != null">
+        #{lightningCountL3,jdbcType=INTEGER},
+      </if>
+      <if test="lightningCountL4 != null">
+        #{lightningCountL4,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL1 != null">
+        #{lifeTermL1,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL2 != null">
+        #{lifeTermL2,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL3 != null">
+        #{lifeTermL3,jdbcType=INTEGER},
+      </if>
+      <if test="lifeTermL4 != null">
+        #{lifeTermL4,jdbcType=INTEGER},
+      </if>
+      <if test="edition != null">
+        #{edition,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lightningTime != null">
+        #{lightningTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

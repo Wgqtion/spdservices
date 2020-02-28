@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ies.spd.spdservices.dao.mapper.AreaMapper">
+  <resultMap id="BaseResultMap" type="model.Area">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="P_CODE" jdbcType="VARCHAR" property="pCode" />
+    <result column="ITUDE_LONG" jdbcType="VARCHAR" property="itudeLong" />
+    <result column="ITUDE_LAT" jdbcType="VARCHAR" property="itudeLat" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="IS_DELETE" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Area">
+    insert into t_area (ID, NAME, P_CODE, 
+      ITUDE_LONG, ITUDE_LAT, UPDATE_DATE, 
+      CODE, IS_DELETE)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pCode,jdbcType=VARCHAR}, 
+      #{itudeLong,jdbcType=VARCHAR}, #{itudeLat,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR}, #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Area">
+    insert into t_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="pCode != null">
+        P_CODE,
+      </if>
+      <if test="itudeLong != null">
+        ITUDE_LONG,
+      </if>
+      <if test="itudeLat != null">
+        ITUDE_LAT,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="isDelete != null">
+        IS_DELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pCode != null">
+        #{pCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLong != null">
+        #{itudeLong,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLat != null">
+        #{itudeLat,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Area">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="P_CODE" jdbcType="VARCHAR" property="pCode" />
+    <result column="ITUDE_LONG" jdbcType="VARCHAR" property="itudeLong" />
+    <result column="ITUDE_LAT" jdbcType="VARCHAR" property="itudeLat" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="IS_DELETE" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Area">
+    insert into t_area (ID, NAME, P_CODE, 
+      ITUDE_LONG, ITUDE_LAT, UPDATE_DATE, 
+      CODE, IS_DELETE)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pCode,jdbcType=VARCHAR}, 
+      #{itudeLong,jdbcType=VARCHAR}, #{itudeLat,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR}, #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Area">
+    insert into t_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="pCode != null">
+        P_CODE,
+      </if>
+      <if test="itudeLong != null">
+        ITUDE_LONG,
+      </if>
+      <if test="itudeLat != null">
+        ITUDE_LAT,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="isDelete != null">
+        IS_DELETE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pCode != null">
+        #{pCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLong != null">
+        #{itudeLong,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLat != null">
+        #{itudeLat,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Area">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="P_CODE" jdbcType="VARCHAR" property="pCode" />
+    <result column="ITUDE_LONG" jdbcType="VARCHAR" property="itudeLong" />
+    <result column="ITUDE_LAT" jdbcType="VARCHAR" property="itudeLat" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Area">
+    insert into t_area (ID, NAME, P_CODE, 
+      ITUDE_LONG, ITUDE_LAT, UPDATE_DATE, 
+      CODE)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pCode,jdbcType=VARCHAR}, 
+      #{itudeLong,jdbcType=VARCHAR}, #{itudeLat,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Area">
+    insert into t_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="pCode != null">
+        P_CODE,
+      </if>
+      <if test="itudeLong != null">
+        ITUDE_LONG,
+      </if>
+      <if test="itudeLat != null">
+        ITUDE_LAT,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pCode != null">
+        #{pCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLong != null">
+        #{itudeLong,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLat != null">
+        #{itudeLat,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Area">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="P_CODE" jdbcType="VARCHAR" property="pCode" />
+    <result column="ITUDE_LONG" jdbcType="VARCHAR" property="itudeLong" />
+    <result column="ITUDE_LAT" jdbcType="VARCHAR" property="itudeLat" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Area">
+    insert into t_area (ID, NAME, P_CODE, 
+      ITUDE_LONG, ITUDE_LAT, UPDATE_DATE, 
+      CODE)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pCode,jdbcType=VARCHAR}, 
+      #{itudeLong,jdbcType=VARCHAR}, #{itudeLat,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Area">
+    insert into t_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="pCode != null">
+        P_CODE,
+      </if>
+      <if test="itudeLong != null">
+        ITUDE_LONG,
+      </if>
+      <if test="itudeLat != null">
+        ITUDE_LAT,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pCode != null">
+        #{pCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLong != null">
+        #{itudeLong,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLat != null">
+        #{itudeLat,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Area">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="P_CODE" jdbcType="VARCHAR" property="pCode" />
+    <result column="ITUDE_LONG" jdbcType="VARCHAR" property="itudeLong" />
+    <result column="ITUDE_LAT" jdbcType="VARCHAR" property="itudeLat" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Area">
+    insert into t_area (ID, NAME, P_CODE, 
+      ITUDE_LONG, ITUDE_LAT, UPDATE_DATE, 
+      CODE)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pCode,jdbcType=VARCHAR}, 
+      #{itudeLong,jdbcType=VARCHAR}, #{itudeLat,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Area">
+    insert into t_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="pCode != null">
+        P_CODE,
+      </if>
+      <if test="itudeLong != null">
+        ITUDE_LONG,
+      </if>
+      <if test="itudeLat != null">
+        ITUDE_LAT,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pCode != null">
+        #{pCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLong != null">
+        #{itudeLong,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLat != null">
+        #{itudeLat,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="model.Area">
+    <result column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="P_CODE" jdbcType="VARCHAR" property="pCode" />
+    <result column="ITUDE_LONG" jdbcType="VARCHAR" property="itudeLong" />
+    <result column="ITUDE_LAT" jdbcType="VARCHAR" property="itudeLat" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+  </resultMap>
+  <insert id="insert" parameterType="model.Area">
+    insert into t_area (ID, NAME, P_CODE, 
+      ITUDE_LONG, ITUDE_LAT, UPDATE_DATE, 
+      CODE)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{pCode,jdbcType=VARCHAR}, 
+      #{itudeLong,jdbcType=VARCHAR}, #{itudeLat,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{code,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Area">
+    insert into t_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="pCode != null">
+        P_CODE,
+      </if>
+      <if test="itudeLong != null">
+        ITUDE_LONG,
+      </if>
+      <if test="itudeLat != null">
+        ITUDE_LAT,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pCode != null">
+        #{pCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLong != null">
+        #{itudeLong,jdbcType=VARCHAR},
+      </if>
+      <if test="itudeLat != null">
+        #{itudeLat,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
