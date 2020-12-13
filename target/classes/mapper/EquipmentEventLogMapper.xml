@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ies.spd.spdservices.dao.mapper.EquipmentEventLogMapper">
+    <resultMap id="BaseResultMap" type="com.ies.spd.spdservices.entity.EquipmentEventLog">
+        <result column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="SPD_NO" jdbcType="VARCHAR" property="spdNo"/>
+        <result column="STATUS" jdbcType="INTEGER" property="status"/>
+        <result column="hex_msg" jdbcType="VARCHAR" property="hexMsg"/>
+        <result column="SILC_L1" jdbcType="INTEGER" property="silcL1"/>
+        <result column="SILC_L2" jdbcType="INTEGER" property="silcL2"/>
+        <result column="SILC_L3" jdbcType="INTEGER" property="silcL3"/>
+        <result column="SILC_L4" jdbcType="INTEGER" property="silcL4"/>
+        <result column="LIGHTNING_AMPLITUDE_L1" jdbcType="INTEGER" property="lightningAmplitudeL1"/>
+        <result column="LIGHTNING_AMPLITUDE_L2" jdbcType="INTEGER" property="lightningAmplitudeL2"/>
+        <result column="LIGHTNING_AMPLITUDE_L3" jdbcType="INTEGER" property="lightningAmplitudeL3"/>
+        <result column="LIGHTNING_AMPLITUDE_L4" jdbcType="INTEGER" property="lightningAmplitudeL4"/>
+        <result column="LIGHTNING_COUNT_L1" jdbcType="INTEGER" property="lightningCountL1"/>
+        <result column="LIGHTNING_COUNT_L2" jdbcType="INTEGER" property="lightningCountL2"/>
+        <result column="LIGHTNING_COUNT_L3" jdbcType="INTEGER" property="lightningCountL3"/>
+        <result column="LIGHTNING_COUNT_L4" jdbcType="INTEGER" property="lightningCountL4"/>
+        <result column="LIFE_TERM_L1" jdbcType="INTEGER" property="lifeTermL1"/>
+        <result column="LIFE_TERM_L2" jdbcType="INTEGER" property="lifeTermL2"/>
+        <result column="LIFE_TERM_L3" jdbcType="INTEGER" property="lifeTermL3"/>
+        <result column="LIFE_TERM_L4" jdbcType="INTEGER" property="lifeTermL4"/>
+        <result column="EDITION" jdbcType="INTEGER" property="edition"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <resultMap id="CountResultMap" type="com.ies.spd.spdservices.entity.EquipmentHistory">
+        <result column="nowdate" property="nowdate"/>
+        <collection property="equiHistoryList" ofType="com.ies.spd.spdservices.entity.EquiHistory">
+            <result column="SPD_NO" property="spdNo"/>
+            <result column="upmax" property="upmax"/>
+            <result column="upmin" property="upmin"/>
+            <result column="timecount" property="timecount"/>
+            <result column="minlife" property="minlife"/>
+        </collection>
+    </resultMap>
+
+    <select id="warnDateSelect" resultMap="CountResultMap">
+        SELECT
+        equipment_history.nowdate,
+        equipment_history.SPD_NO,
+        equipment_history.upmax,
+        equipment_history.upmin,
+        equipment_history.minlife
+        FROM
+        equipment_history
+        LEFT JOIN t_equipment
+        ON t_equipment.SPD_NO = equipment_history.SPD_NO
+        LEFT JOIN t_version
+        ON t_version.ID = t_equipment.VERSION_ID
+        WHERE equipment_history.minlife != 0
+        AND equipment_history.minlife &lt; t_version.LIFE_THRESHOLD
+        AND MONTH(equipment_history.nowdate) = #{thisMonth}
+        AND YEAR(equipment_history.nowdate) = #{thisYear}
+        ORDER BY
+        equipment_history.nowdate
+  </select>
+
+    <select id="dangerDateSelect" resultMap="CountResultMap">
+        SELECT
+        nowdate,
+        SPD_NO,
+        upmax,
+        upmin,
+        minlife
+        FROM
+        equipment_history
+        WHERE
+        ( minlife = 0
+--         OR timecount &lt; 10
+         )
+        AND MONTH ( equipment_history.nowdate ) = #{thisMonth}
+        AND YEAR ( equipment_history.nowdate ) = #{thisYear}
+  </select>
+
+</mapper>

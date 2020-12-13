@@ -40,21 +40,15 @@ public class EquipmentEventLogService {
             Equipment equipment = equipmentService.getEquipmentBySpdNo(tcpMsg.getSpdNo());
             EquipmentEvent equipmentEvent = new EquipmentEvent();
             Gateway selectGateway = gatewayService.findByhostAddressAndPort(tcpMsg.getHostAddress(),tcpMsg.getPort());
+            EquipmentEvent equipmentEventBuild = equipmentEventService.getEquipmentEventBySpdNo(tcpMsg.getSpdNo());
+           if (equipmentEventBuild==null){
+                equipmentEvent.setSpdNo(tcpMsg.getSpdNo());
+            }else {
+                equipmentEvent = equipmentEventBuild;
+            }
             if (equipment != null) {
-                EquipmentEvent equipmentEventBuild = equipmentEventService.getEquipmentEventByEquipment(equipment);
                 // 查询当前设备状态信息
-                if (equipmentEventBuild == null) {
-                    equipmentEvent.setEquipment(equipment);
-                } else {
-                    equipmentEvent = equipmentEventBuild;
-                }
-            } else {
-                EquipmentEvent equipmentEventBuild = equipmentEventService.getEquipmentEventBySpdNo(tcpMsg.getSpdNo());
-                if (equipmentEventBuild != null) {
-                    equipmentEvent = equipmentEventBuild;
-                } else {
-                    equipmentEvent.setSpdNo(tcpMsg.getSpdNo());
-                }
+                equipmentEvent.setEquipment(equipment);
             }
             // 绑定网关信息
             equipmentEvent.setGateway(selectGateway);

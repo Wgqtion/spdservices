@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ies.spd.spdservices.dao.mapper.EquipmentMapper">
+  <resultMap id="BaseResultMap" type="com.ies.spd.spdservices.entity.Equipment">
+    <result column="ID" property="id" />
+    <result column="SPD_NO" property="spdNo" />
+    <result column="UPDATE_TIME" property="updateTime" />
+    <!--关联字段-->
+    <!--<result column="AREA_P_ID" property="area.id" />-->
+    <!--<result column="AREA_ID" property="area.id" />-->
+    <!--<result column="VERSION_ID" property="version.id" />-->
+    <association property="area" javaType="com.ies.spd.spdservices.entity.Area">
+      <id column="AREA_ID" property="id"></id>
+      <result column="NAME" property="name"></result>
+    </association>
+
+  </resultMap>
+  <select id="findByAll" resultMap="BaseResultMap">
+    select t_equipment.ID,
+    t_equipment.SPD_NO,
+    t_equipment.UPDATE_TIME,
+    t_equipment.AREA_ID,
+    t_area.id,
+    t_area.name
+    from t_equipment
+    left join
+    t_area
+    on
+    t_equipment.AREA_ID = t_area.id
+  </select>
+  
+  <!--<select id="findAll"></select>-->
+</mapper>

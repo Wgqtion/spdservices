@@ -2,6 +2,7 @@ package com.ies.spd.spdservices.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.ies.spd.spdservices.constants.LightningStatistics;
 import com.ies.spd.spdservices.constants.PageConstants;
 import com.ies.spd.spdservices.entity.Equipment;
 import com.ies.spd.spdservices.entity.EquipmentEvent;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,7 +42,18 @@ public class EquipmentEventController {
     public Page<Equipment> getEquipmentList(@RequestBody PageConstants equipmentEventPageConstants)throws Exception {
         System.out.println(JSONObject.toJSONString(equipmentEventPageConstants));
         Page<Equipment> equipmentPage = equipmentService.getEquipmentList(equipmentEventPageConstants);
+
         return equipmentPage;
+    }
+
+    /**
+     * 新上线设备查询
+     * @return
+     */
+    @RequestMapping(value = "/newEquipmentList")
+    public List<EquipmentEvent> newEquipment(){
+        List<EquipmentEvent> equipmentEventList = equipmentEventService.findNewEqipmentByEquipmentEvent();
+        return equipmentEventList;
     }
 
     @RequestMapping(value = "/deleteEquipment")
@@ -62,4 +75,12 @@ public class EquipmentEventController {
         return savemsg;
     }
 
+    /**
+     * 统计雷击总数
+     * @return
+     */
+    @RequestMapping(value = "/sumLightningCount")
+    public List<LightningStatistics> sumLightningCount(){
+       return equipmentEventService.sumLightningCount();
+    }
 }

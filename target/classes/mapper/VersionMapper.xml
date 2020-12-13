@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ies.spd.spdservices.dao.mapper.VersionMapper">
+    <resultMap id="BaseResultMap" type="com.ies.spd.spdservices.entity.Version">
+        <result column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="VERSION_NO" jdbcType="VARCHAR" property="versionNo"/>
+        <result column="LIFE_THRESHOLD" jdbcType="INTEGER" property="lifeThreshold"/>
+        <result column="DESCRIPTION" jdbcType="VARCHAR" property="description"/>
+        <result column="UPDATE_TIME" jdbcType="VARCHAR" property="updateTime"/>
+        <result column="eqCount" jdbcType="INTEGER" property="eqCount"/>
+
+    </resultMap>
+
+    <select id="getRootCount" resultMap="BaseResultMap">
+    SELECT
+        t_version.ID,
+        t_version.VERSION_NO,
+        t_version.LIFE_THRESHOLD,
+        t_version.DESCRIPTION,
+        t_version.UPDATE_TIME,
+        COUNT( t_equipment.ID ) eqCount
+    FROM
+        t_version
+        LEFT JOIN t_equipment ON t_equipment.VERSION_ID = t_version.ID
+        WHERE `t_equipment`.`IS_DELETE` = FALSE
+    GROUP BY
+        t_version.ID
+  </select>
+</mapper>

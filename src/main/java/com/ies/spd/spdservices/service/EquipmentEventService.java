@@ -1,7 +1,11 @@
 package com.ies.spd.spdservices.service;
 
+import com.alibaba.fastjson.JSON;
+import com.ies.spd.spdservices.constants.LightningStatistics;
 import com.ies.spd.spdservices.constants.PageConstants;
 import com.ies.spd.spdservices.dao.EquipmentEventDao;
+import com.ies.spd.spdservices.dao.mapper.EquipmentEventLogMapper;
+import com.ies.spd.spdservices.dao.mapper.EquipmentEventMapper;
 import com.ies.spd.spdservices.entity.Equipment;
 import com.ies.spd.spdservices.entity.EquipmentEvent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +16,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * @Athor: 吴广庆
@@ -27,6 +37,9 @@ public class EquipmentEventService {
 
     @Autowired
     private EquipmentEventDao equipmentEventDao;
+
+    @Autowired
+    private EquipmentEventMapper equipmentEventMapper;
 
     /**
      * 通过静态设备数据获取当前设备信息
@@ -86,5 +99,41 @@ public class EquipmentEventService {
     public EquipmentEvent save(EquipmentEvent equipmentEvent){
        EquipmentEvent equipmentEventSave = equipmentEventDao.saveAndFlush(equipmentEvent);
        return equipmentEventSave;
+    }
+
+    public List<EquipmentEvent> findNewEqipmentByEquipmentEvent(){
+       List<EquipmentEvent> equipmentEventList = equipmentEventDao.getEquipmentEventsByEquipmentIsNull();
+       return equipmentEventList;
+    }
+
+    public List<LightningStatistics> sumLightningCount() {
+        List<LightningStatistics> lightningStatisticsList = equipmentEventMapper.sumLightningCount();
+        List<LightningStatistics> lightningStatisticsList2 = new ArrayList<>();
+        if(lightningStatisticsList != null){
+            lightningStatisticsList.get(0).getMymonth();
+            LocalDate startDate = LocalDate.parse(lightningStatisticsList.get(0).getMymonth()+"-01");
+            LocalDate endDate = LocalDate.now();
+            long distance = ChronoUnit.MONTHS.between(startDate, endDate);
+            if (distance < 1) {
+                return null;
+            }
+            Stream.iterate(startDate, d -> {
+                return d.plusMonths(1);
+            }).limit(distance + 1).forEach(f -> {
+                System.out.println(f.getDayOfYear());
+               LightningStatistics lightningStatistics = new LightningStatistics();
+                lightningStatistics.setMymonth(f.format(DateTimeFormatter.ofPattern("YYYY-MM")));
+                lightningStatistics.setSumlightning(0);
+                lightningStatisticsList.stream().forEach(item->{
+                    if (item.getMymonth().equals(lightningStatistics.getMymonth())){
+                        lightningStatistics.setSumlightning(item.getSumlightning());
+                    }
+                });
+                lightningStatisticsList2.add(lightningStatistics);
+            });
+            System.out.println(JSON.toJSONString(lightningStatisticsList2));
+        }
+
+        return lightningStatisticsList2;
     }
 }

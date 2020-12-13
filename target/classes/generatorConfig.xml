@@ -21,7 +21,7 @@
         location属性指明加载jar/zip包的全路径
     -->
     <classPathEntry
-            location="C:\Users\wgqki\.m2\repository\mysql\mysql-connector-java\8.0.16\mysql-connector-java-8.0.16.jar"/>
+            location="C:\Users\wu865\.m2\repository\mysql\mysql-connector-java\8.0.19\mysql-connector-java-8.0.19.jar"/>
 
     <!--
         context:生成一组对象的环境
@@ -56,9 +56,9 @@
         </commentGenerator>
 
         <!-- JDBC连接配置 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/spd?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=UTC"
-                        userId="spd"
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/spd?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;allowPublicKeyRetrieval=true"
+                        userId="root"
                         password="111111"/>
 
         <!--

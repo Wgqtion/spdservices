@@ -7,16 +7,24 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Athor: 吴广庆
  * @Date: 2019-07-15
  */
+@Repository
 public interface EquipmentEventDao extends JpaSpecificationExecutor<EquipmentEvent>,JpaRepository<EquipmentEvent,Long> {
 
     EquipmentEvent getEquipmentEventByEquipment(Equipment equipment);
 
     EquipmentEvent getEquipmentEventBySpdNo(String spdNo);
+
+    List<EquipmentEvent> getEquipmentEventsByEquipmentIsNull();
+
+
 
 //    Page<EquipmentEvent> findAll(Specification<EquipmentEvent> equipmentEventSpecification, Pageable pageable);
 }

@@ -59,8 +59,8 @@ public class TcpServer {
 				}
 			});
 			serverBootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
-			ChannelFuture f=serverBootstrap.bind(IP, PORT).sync();
-			Log4jUtils.tcpLog.info("TCP服务器已启动,IP:"+IP+",PORT:"+PORT);
+			ChannelFuture f=serverBootstrap.bind(PORT).sync();
+			Log4jUtils.tcpLog.info("TCP服务器已启动,PORT:"+PORT);
 			f.channel().closeFuture().sync();
 		}
 		catch (InterruptedException e) {

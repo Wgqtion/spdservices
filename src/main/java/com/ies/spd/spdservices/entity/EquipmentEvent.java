@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ies.spd.spdservices.constants.Constants;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -72,6 +74,7 @@ public class EquipmentEvent {
     }
 
     @OneToOne
+    @NotFound(action= NotFoundAction.IGNORE)
     @JoinColumn(name = "GATEWAY_ID")
     public Gateway getGateway() {
         return gateway;
