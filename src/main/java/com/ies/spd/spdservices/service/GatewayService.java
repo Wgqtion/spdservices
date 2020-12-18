@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @Date: 2019-12-17
  */
 @Service
+@Transactional
 public class GatewayService {
     @Autowired
     private GatewayDao gatewayDao;
@@ -83,5 +85,11 @@ public class GatewayService {
            return gatewayDao.saveAll(gatewayList);
        }
        return null;
+    }
+
+    public long deleteGatewayById(String hostAddress) {
+//        gatewayDao.deleteById(id);
+
+       return gatewayDao.deleteByHostAddress(hostAddress);
     }
 }

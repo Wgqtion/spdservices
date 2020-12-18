@@ -12,18 +12,17 @@
     </resultMap>
 
     <select id="getRootCount" resultMap="BaseResultMap">
-    SELECT
-        t_version.ID,
-        t_version.VERSION_NO,
-        t_version.LIFE_THRESHOLD,
-        t_version.DESCRIPTION,
-        t_version.UPDATE_TIME,
-        COUNT( t_equipment.ID ) eqCount
-    FROM
-        t_version
-        LEFT JOIN t_equipment ON t_equipment.VERSION_ID = t_version.ID
+        SELECT t_version.ID,
+               t_version.VERSION_NO,
+               t_version.LIFE_THRESHOLD,
+               t_version.DESCRIPTION,
+               t_version.UPDATE_TIME,
+               COUNT( t_equipment.ID ) eqCount
+        FROM t_version
+                 LEFT JOIN t_equipment ON t_equipment.VERSION_ID = t_version.ID
         WHERE `t_equipment`.`IS_DELETE` = FALSE
-    GROUP BY
-        t_version.ID
-  </select>
+           OR `t_equipment`.ID IS NULL
+           AND `t_version`.`IS_DELETE` = FALSE
+        GROUP BY t_version.ID
+    </select>
 </mapper>

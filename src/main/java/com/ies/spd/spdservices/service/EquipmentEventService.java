@@ -115,7 +115,7 @@ public class EquipmentEventService {
             LocalDate endDate = LocalDate.now();
             long distance = ChronoUnit.MONTHS.between(startDate, endDate);
             if (distance < 1) {
-                return null;
+                return lightningStatisticsList;
             }
             Stream.iterate(startDate, d -> {
                 return d.plusMonths(1);

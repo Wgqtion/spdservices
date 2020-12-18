@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.ies.spd.spdservices.entity.Gateway;
 import com.ies.spd.spdservices.service.GatewayService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,5 +31,16 @@ public class GatewayController {
     public List<Gateway> isOnline() throws Exception{
         System.out.println(JSON.toJSONString(gatewayService.findAll()));
         return gatewayService.findAll();
+    }
+
+    /**
+     * 删除网关信息
+     * @param gateway
+     * @return
+     */
+    @RequestMapping(value = "deleteGateway")
+    public String deleteGateway(@RequestBody Gateway gateway){
+        gatewayService.deleteGatewayById(gateway.getHostAddress());
+        return "success";
     }
 }

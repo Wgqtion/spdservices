@@ -24,11 +24,12 @@ public class TcpMsg {
      */
     private Integer port;
 
-    public TcpMsg(byte[] reds,String hostAddress,Integer port) {
+    public TcpMsg(byte[] reds, String hostAddress, Integer port) {
         this.reds = reds;
         this.hostAddress = hostAddress;
         this.port = port;
     }
+
     public byte[] getReds() {
         return reds;
     }
@@ -50,7 +51,8 @@ public class TcpMsg {
     }
 
     public String getSpdNo() {
-        return Integer.toHexString(reds[3]).concat(Integer.toHexString(reds[4])).concat(Integer.toHexString(reds[5]));
+//        return Integer.toHexString(reds[3]).concat(Integer.toHexString(reds[4])).concat(Integer.toHexString(reds[5]));
+        return String.valueOf(reds[3] * 65536 + reds[4] * 256 + reds[5]);
     }
 
     public int getByte(int Lx) {
@@ -105,29 +107,29 @@ public class TcpMsg {
                     equipmentEvent.setLightningCountL4(reds[i] & 0xff);
                     break;
                 case 18:
-                    if(reds[i] != 0x00 && reds[i]< 0){
-                        equipmentEvent.setLifeTermL1((reds[i] ^ 0x80)& 0xff);
+                    if (reds[i] != 0x00 && reds[i] < 0) {
+                        equipmentEvent.setLifeTermL1((reds[i] ^ 0x80) & 0xff);
                     } else {
                         equipmentEvent.setLifeTermL1(0);
                     }
                     break;
                 case 19:
-                    if(reds[i] != 0x00 && reds[i]< 0){
-                        equipmentEvent.setLifeTermL2((reds[i] ^ 0x80)& 0xff);
+                    if (reds[i] != 0x00 && reds[i] < 0) {
+                        equipmentEvent.setLifeTermL2((reds[i] ^ 0x80) & 0xff);
                     } else {
                         equipmentEvent.setLifeTermL2(0);
                     }
                     break;
                 case 20:
-                    if(reds[i] != 0x00 && reds[i]< 0){
-                        equipmentEvent.setLifeTermL3((reds[i] ^ 0x80)& 0xff);
+                    if (reds[i] != 0x00 && reds[i] < 0) {
+                        equipmentEvent.setLifeTermL3((reds[i] ^ 0x80) & 0xff);
                     } else {
                         equipmentEvent.setLifeTermL3(0);
                     }
                     break;
                 case 21:
-                    if(reds[i] != 0x00 && reds[i]< 0){
-                        equipmentEvent.setLifeTermL4((reds[i] ^ 0x80)& 0xff);
+                    if (reds[i] != 0x00 && reds[i] < 0) {
+                        equipmentEvent.setLifeTermL4((reds[i] ^ 0x80) & 0xff);
                     } else {
                         equipmentEvent.setLifeTermL4(0);
                     }
@@ -135,7 +137,7 @@ public class TcpMsg {
                 case 22:
                     equipmentEvent.setEdition(reds[i] & 0xff);
                     break;
-                    default:
+                default:
             }
         }
 

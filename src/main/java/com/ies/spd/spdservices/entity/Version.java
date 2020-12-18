@@ -66,7 +66,8 @@ public class Version {
         this.description = description;
     }
 
-    @Column(name = "IS_DELETE",updatable = false)
+
+    @Column(name = "IS_DELETE",updatable = false,insertable = false)
     public Boolean getIsDelete() {
         return isDelete;
     }

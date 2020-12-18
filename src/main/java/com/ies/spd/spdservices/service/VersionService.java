@@ -51,4 +51,8 @@ public class VersionService {
     public Version save(Version version) throws Exception{
         return versionDao.save(version);
     }
+
+    public void deleteVersion(Long id){
+        versionDao.removeMyVersion(id);
+    }
 }

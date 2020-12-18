@@ -16,4 +16,6 @@ public interface GatewayDao extends JpaSpecificationExecutor<Gateway>,JpaReposit
 
     Gateway findGatewayByHostAddressAndPort(String HostAddress,Integer port);
     List<Gateway> findAllByOnlineIsTrue();
+
+    Long deleteByHostAddress(String hostAddress);
 }

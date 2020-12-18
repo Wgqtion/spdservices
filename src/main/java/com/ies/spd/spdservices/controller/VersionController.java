@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +43,7 @@ public class VersionController {
     @RequestMapping(value = "save")
     public Version save(@RequestBody Version version)throws Exception{
         Log4jUtils.versionLog.info(JSON.toJSONString(version));
+        version.setUpdateTime(new Date());
         return versionService.save(version);
     }
     /**
@@ -50,8 +52,9 @@ public class VersionController {
      * @throws Exception
      */
     @RequestMapping(value = "deleteVersion")
-    public Version deleteVersion(@RequestBody Version version)throws Exception{
+    public String deleteVersion(@RequestBody Version version)throws Exception{
         Log4jUtils.versionLog.info(JSON.toJSONString(version));
-        return versionService.save(version);
+        versionService.deleteVersion(version.getId());
+        return "success";
     }
 }
