@@ -8,6 +8,7 @@ import com.ies.spd.spdservices.dao.mapper.EquipmentEventLogMapper;
 import com.ies.spd.spdservices.dao.mapper.EquipmentEventMapper;
 import com.ies.spd.spdservices.entity.Equipment;
 import com.ies.spd.spdservices.entity.EquipmentEvent;
+import com.ies.spd.spdservices.entity.Gateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -136,4 +137,21 @@ public class EquipmentEventService {
 
         return lightningStatisticsList2;
     }
+
+    public List<EquipmentEvent> getSpdNoAll(){
+        return equipmentEventDao.findAll();
+    }
+
+    /**
+     * 查询所有网管IP下的设备
+     * @param hostAddress
+     * @return
+     */
+    public List<EquipmentEvent> getEquipmentEventsByGatewayHostAddress(String hostAddress) {
+        return equipmentEventDao.getEquipmentEventsByGatewayHostAddress(hostAddress);
+    }
+
+//    public void updateGatway(Gateway gateway,String hostAddress){
+//        equipmentEventDao.updateGatway(gateway,hostAddress);
+//    }
 }

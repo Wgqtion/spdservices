@@ -8,14 +8,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
 
 import javax.annotation.Resource;
 
 @SpringBootApplication
-public class SpdservicesApplication implements CommandLineRunner {
-//    @Bean
+@EnableCaching// 开启缓存，需要显示的指定
+public class SpdServicesApplication implements CommandLineRunner {
+    //    @Bean
 //    public HttpMessageConverters fastJsonHttpMessageConverters() {
 //        // 1.定义一个converters转换消息的对象
 //        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
@@ -33,7 +35,7 @@ public class SpdservicesApplication implements CommandLineRunner {
     private TcpServer tcpServer;
 
     public static void main(String[] args) {
-        SpringApplication.run(SpdservicesApplication.class, args);
+        SpringApplication.run(SpdServicesApplication.class, args);
     }
 
     @Override

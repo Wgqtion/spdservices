@@ -39,6 +39,9 @@ public class EquipmentService {
     @Autowired
     private EquipmentMapper equipmentMapper;
 
+    @Autowired
+    private CaffeineService caffeineService;
+
     public Equipment getEquipmentBySpdNo(String spdNo) {
         Log4jUtils.tcpLog.info("spdNo:" + spdNo);
         List<Equipment> equipmentList = equipmentDao.findAllBySpdNo(spdNo);
@@ -207,10 +210,18 @@ public class EquipmentService {
         equipment.setVersion(thisversion.get().get());
         equipment.setArea(thisarea.get().get());
         equipment.setUpdateTime(new Date());
+        // 操作同时更新缓存
+        return caffeineService.putEquipment(equipment);
+    }
+
+    public Equipment saveOline(Equipment equipment){
         return equipmentDao.saveAndFlush(equipment);
     }
-    
     public void findVersionById(Optional<Version> thisversion,Long id){
         thisversion = versionDao.findById(id);
+    }
+
+    public List<Equipment> getSpdNoAll() {
+        return equipmentDao.findAll();
     }
 }

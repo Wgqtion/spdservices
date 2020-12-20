@@ -1,7 +1,11 @@
 package com.ies.spd.spdservices.tcp.core;
 
+import com.ies.spd.spdservices.entity.Equipment;
+import com.ies.spd.spdservices.entity.EquipmentEvent;
 import com.ies.spd.spdservices.entity.Gateway;
+import com.ies.spd.spdservices.service.CaffeineService;
 import com.ies.spd.spdservices.service.EquipmentEventLogService;
+import com.ies.spd.spdservices.service.EquipmentEventService;
 import com.ies.spd.spdservices.service.GatewayService;
 import com.ies.spd.spdservices.tcp.entity.TcpMsg;
 import com.ies.spd.spdservices.utils.Log4jUtils;
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.net.InetSocketAddress;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 业务处理
@@ -32,7 +37,12 @@ public class TcpServerHandler extends ChannelInboundHandlerAdapter {
 	@Autowired
 	private EquipmentEventLogService equipmentEventLogService;
 	@Autowired
+	private EquipmentEventService equipmentEventService;
+	@Autowired
 	private GatewayService gatewayService;
+
+	@Autowired
+	private CaffeineService caffeineService;
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -48,7 +58,14 @@ public class TcpServerHandler extends ChannelInboundHandlerAdapter {
 		gateway.setUpdateTime(new Date());
 		gateway.setOnline(true);
 		// 更新网关状态
-		gatewayService.save(gateway);
+		Gateway finalGateway = gatewayService.save(gateway);
+//		equipmentEventService.updateGatway(gateway,gateway.getHostAddress());
+		List<EquipmentEvent> equipmentEventList = equipmentEventService.getEquipmentEventsByGatewayHostAddress(gateway.getHostAddress());
+		// 更新缓存数据
+		equipmentEventList.stream().forEach(e->{
+			e.setGateway(finalGateway);
+			caffeineService.putEquipmentEvent(e);
+		});
 	}
 
 	@Override
@@ -71,6 +88,7 @@ public class TcpServerHandler extends ChannelInboundHandlerAdapter {
 			equipmentEventLogService.tcpReceipt(tcpMsg);
 		}catch(Exception e){
 			Log4jUtils.tcpError.info("exception:" + this.getClass() + ",Message:" + e.getMessage());
+			e.printStackTrace();
 		}finally {
 			ReferenceCountUtil.release(msg);
 		}

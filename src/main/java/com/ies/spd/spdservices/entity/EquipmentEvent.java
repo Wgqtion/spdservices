@@ -67,7 +67,7 @@ public class EquipmentEvent {
 
 
     @OneToOne
-    @JoinColumn(name = "SPD_ID")
+    @JoinColumn(name = "SPD_ID",updatable = false)
     @JsonBackReference(value = "equipment")
     public Equipment getEquipment() {
         return equipment;

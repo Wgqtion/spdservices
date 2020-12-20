@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @Athor: 吴广庆
@@ -30,6 +31,11 @@ public class EquipmentEventLogService {
     @Autowired
     private EquipmentEventLogMapper equipmentEventLogMapper;
 
+    //    @Autowired
+//    private GuavaCacheService guavaCacheService;
+    @Autowired
+    private CaffeineService caffeineService;
+
     @Autowired
     private GatewayService gatewayService;
 
@@ -37,21 +43,56 @@ public class EquipmentEventLogService {
         Date nowDate = new Date();
         Log4jUtils.tcpLog.info("CRC校验" + nowDate + "：" + tcpMsg.getFlagCRC());
         if (tcpMsg.getFlagCRC()) {
-            Equipment equipment = equipmentService.getEquipmentBySpdNo(tcpMsg.getSpdNo());
-            EquipmentEvent equipmentEvent = new EquipmentEvent();
-            Gateway selectGateway = gatewayService.findByhostAddressAndPort(tcpMsg.getHostAddress(),tcpMsg.getPort());
-            EquipmentEvent equipmentEventBuild = equipmentEventService.getEquipmentEventBySpdNo(tcpMsg.getSpdNo());
-           if (equipmentEventBuild==null){
+            EquipmentEvent equipmentEvent = caffeineService.getEquipmentEvent(tcpMsg.getSpdNo());
+            Equipment equipment = caffeineService.getEquipment(tcpMsg.getSpdNo());
+//            List<Gateway> gatewayList = guavaCacheService.getGateway();
+            // 如果没有则刷新缓存
+//            if (equipmentList == null) {
+//                equipmentList = guavaCacheService.putEquipmentNo();
+//            }
+//
+//            // 如果没有则刷新缓存
+//            if (equipmentEventList == null) {
+//                equipmentEventList = guavaCacheService.putEquipmentEventNo();
+//            }
+
+            // 如果没有则刷新缓存
+//            if (gatewayList == null) {
+//                gatewayList = guavaCacheService.putGateway();
+//            }
+
+//            Optional<Equipment> equipment = null;
+//            EquipmentEvent equipmentEventBuild = new EquipmentEvent();
+//            Optional<Gateway> gateway = null;
+            // 如果没有则刷新缓存
+//            if (equipmentList == null) {
+//                equipment = equipmentList.stream().filter(a -> a.getSpdNo().equals(tcpMsg.getSpdNo())).findFirst();
+//            }
+//            // 如果没有则刷新缓存
+//            if (equipmentEventList == null) {
+//                equipmentEventBuild = equipmentEventList.stream().filter(a -> a.getSpdNo().equals(tcpMsg.getSpdNo())).findFirst();
+//            }
+
+//            EquipmentEvent equipmentEvent = new EquipmentEvent();
+//            Gateway selectGateway = gatewayService.findByhostAddressAndPort(tcpMsg.getHostAddress(), tcpMsg.getPort());
+//            EquipmentEvent equipmentEventBuild = equipmentEventService.getEquipmentEventBySpdNo(tcpMsg.getSpdNo());
+            if (equipmentEvent == null) {
+                equipmentEvent = new EquipmentEvent();
                 equipmentEvent.setSpdNo(tcpMsg.getSpdNo());
-            }else {
-                equipmentEvent = equipmentEventBuild;
+                Gateway selectGateway = gatewayService.findByhostAddressAndPort(tcpMsg.getHostAddress(), tcpMsg.getPort());
+                // 绑定网关信息
+                equipmentEvent.setGateway(selectGateway);
+            } else if (!tcpMsg.getHostAddress().equals(equipmentEvent.getGateway().getHostAddress())) {
+                Gateway selectGateway = gatewayService.findByhostAddressAndPort(tcpMsg.getHostAddress(), tcpMsg.getPort());
+                // 绑定网关信息
+                equipmentEvent.setGateway(selectGateway);
             }
-            if (equipment != null) {
+            if (equipment != null && equipmentEvent.getEquipment() == null) {
                 // 查询当前设备状态信息
+                System.out.println("入力设备详情");
                 equipmentEvent.setEquipment(equipment);
             }
-            // 绑定网关信息
-            equipmentEvent.setGateway(selectGateway);
+
             tcpMsg.buidEquipmentEvent(equipmentEvent);
             equipmentEvent.setUpdateTime(nowDate);
             equipmentEvent.setCreateTime(nowDate);
